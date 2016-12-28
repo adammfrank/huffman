@@ -17,6 +17,7 @@ func (pq PriorityQueue) Swap(i, j int) {
 	pq[j].index = j
 }
 
+// Push adds an Item to the underlying slice
 func (pq *PriorityQueue) Push(x interface{}) {
 	n := len(*pq)
 	item := x.(*Item)
@@ -24,6 +25,7 @@ func (pq *PriorityQueue) Push(x interface{}) {
 	*pq = append(*pq, item)
 }
 
+// Pop removes and returns the first element of the slice
 func (pq *PriorityQueue) Pop() interface{} {
 	old := *pq
 	n := len(old)
