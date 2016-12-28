@@ -11,10 +11,12 @@ type Item struct {
 	index    int
 }
 
-func (this Item) Equals(other Item) bool {
-	return this.Value == other.Value
+// Equals checks equality of two Items
+func (item Item) Equals(other Item) bool {
+	return item.Value == other.Value
 }
 
-func (this Item) String() string {
-	return fmt.Sprintf("{Value: %c, Priority: %f, index: %d}", this.Value, this.Priority, this.index)
+// String prints an Item
+func (item Item) String() string {
+	return fmt.Sprintf("{Value: %c, Priority: %f, index: %d}", item.Value, item.Priority, item.index)
 }
