@@ -6,9 +6,13 @@ type RunePriorityQueue struct {
 	queue *PriorityQueue
 }
 
-func NewRunePriorityQueue() *RunePriorityQueue {
+func NewRunePriorityQueue(pq *PriorityQueue) *RunePriorityQueue {
 	newRPQ := new(RunePriorityQueue)
-	newRPQ.queue = new(PriorityQueue)
+	if pq != nil {
+		newRPQ.queue = pq
+	} else {
+		newRPQ.queue = new(PriorityQueue)
+	}
 	heap.Init(newRPQ.queue)
 	return newRPQ
 }

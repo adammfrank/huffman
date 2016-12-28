@@ -1,14 +1,5 @@
 package huffman
 
-import "fmt"
-
-// Item is a pairing of a rune and its probability in the string
-type Item struct {
-	Value    interface{}
-	Priority float64
-	index    int
-}
-
 // PriorityQueue is a PQ of Runes, sorted by probability
 type PriorityQueue []*Item
 
@@ -40,8 +31,4 @@ func (pq *PriorityQueue) Pop() interface{} {
 	item.index = -1
 	*pq = old[0 : n-1]
 	return item
-}
-
-func (item Item) String() string {
-	return fmt.Sprintf("{ Index: %d Priority: %f Value: %c }\n", item.index, item.Priority, item.Value)
 }
