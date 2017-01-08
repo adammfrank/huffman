@@ -6,9 +6,12 @@ import (
 
 // Item is a pairing of a rune and its probability in the string
 type Item struct {
-	Value    interface{}
-	Priority float64
-	index    int
+	Value      interface{}
+	Priority   float64
+	index      int
+	LeftChild  *Item
+	RightChild *Item
+	Parent     *Item
 }
 
 // Equals checks equality of two Items

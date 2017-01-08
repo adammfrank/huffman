@@ -9,25 +9,27 @@ import (
 func main() {
 	const input = "AABBBCDDEDDDE"
 	probs := huffman.CalculateProbabilities(input)
-	rpq := huffman.NewRunePriorityQueue()
-	fmt.Println(probs)
+	rpq := huffman.NewRunePriorityQueue(nil)
 	for k, v := range probs {
 		item := new(huffman.Item)
 		item.Value = k
 		item.Priority = v
 		rpq.Push(item)
-		fmt.Println(rpq)
 	}
 
-	fmt.Println(rpq)
+	for rpq.Len() > 1 {
+		fmt.Println(rpq.Len())
+		item1 := rpq.Pop()
+		item2 := rpq.Pop()
 
-	item1 := &huffman.Item{Value: 'Z', Priority: float64(0.08)}
-	rpq.Push(item1)
+		parent := new(huffman.Item)
+		parent.LeftChild = item1
+		parent.RightChild = item2
+		parent.Priority = item1.Priority + item2.Priority
+		parent.Value = nil
+		rpq.Push(parent)
+	}
 
-	fmt.Println(rpq)
-
-	rpq.Pop()
-
-	fmt.Println(rpq)
+	fmt.Println(rpq.Pop())
 
 }

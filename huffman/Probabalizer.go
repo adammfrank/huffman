@@ -30,9 +30,6 @@ func CalculateProbabilities(input string) map[rune]float64 {
 			length++
 		}
 	}
-	for k, v := range result {
-		result[k] = v / length
 
-	}
 	return result
 }

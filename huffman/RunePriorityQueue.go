@@ -20,6 +20,19 @@ func NewRunePriorityQueue(pq *PriorityQueue) *RunePriorityQueue {
 	return newRPQ
 }
 
+func NewRunePriorityQueueFromString(input string) *RunePriorityQueue {
+	probs := CalculateProbabilities(input)
+	rpq := NewRunePriorityQueue(nil)
+	for k, v := range probs {
+		item := new(Item)
+		item.Value = k
+		item.Priority = v
+		rpq.Push(item)
+	}
+
+	return rpq
+}
+
 // Push wraps PriorityQueue Push in heap
 func (rpq *RunePriorityQueue) Push(item *Item) {
 	heap.Push(rpq.queue, item)
@@ -37,4 +50,8 @@ func (rpq RunePriorityQueue) String() string {
 	}
 
 	return result
+}
+
+func (rpq RunePriorityQueue) Len() int {
+	return rpq.queue.Len()
 }
