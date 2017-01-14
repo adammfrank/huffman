@@ -8,10 +8,10 @@ import (
 )
 
 // CalculateProbabilities returns an array of RuneProbs, one for each rune
-func CalculateProbabilities(input string) map[rune]float64 {
+func CalculateProbabilities(input string) map[rune]int {
 	reader := bufio.NewReader(strings.NewReader(input))
 
-	result := make(map[rune]float64)
+	result := make(map[rune]int)
 	length := float64(0)
 
 	for {
